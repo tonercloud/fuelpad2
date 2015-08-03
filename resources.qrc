@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/assets">
+        <file>icons/harbour-fuelpad2.png</file>
+        <file>icons/black-steering-wheel-32.png</file>
+        <file>icons/icon-m-common-drilldown-arrow.png</file>
+    </qresource>
+</RCC>
