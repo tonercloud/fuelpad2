@@ -52,12 +52,12 @@ Page {
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pixelSize: Theme.fontSizeLarge
-                text: "Fuelpad2"
+                text: qsTr("Fuelpad2")
             }
 
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "Vehicle Records Database"
+                text: qsTr("Vehicle Records Database")
             }
 
             Label {
@@ -68,7 +68,7 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
                 textFormat: Text.RichText
-                text: "<style>a{color:" + Theme.highlightColor + "}</style>Fuelpad2 allows you to store details of your vehicle usage. When the program starts, you will not have defined any vehicle. You are therefore presented with a vehicle of random name. At this point you can choose to modify that name or create a new one. But you are advised that the first thing you should do is check the Settings page to allow you choose the units pertinent to your country or indeed, your own particular needs."
+                text: qsTr("<style>a{color:" + Theme.highlightColor + "}</style>Fuelpad2 allows you to store details of your vehicle usage. When the program starts, you will not have defined any vehicle. You are therefore presented with a vehicle of random name. At this point you can choose to modify that name or create a new one. But you are advised that the first thing you should do is check the Settings page to allow you to choose the units pertinent to your country or indeed, your own particular needs.")
             }
 
             Label {
@@ -78,12 +78,12 @@ Page {
                 wrapMode: Text.WordWrap
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                text: "There is no practical limit to the amount of your personal information which is stored, save for the amount of memory in the device."
+                text: qsTr("There is no practical limit to the amount of your personal information which is stored, save for the amount of memory in the device.")
             }
 
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "Acknowledgements"
+                text: qsTr("Acknowledgements")
             }
 
             Label {
@@ -94,13 +94,12 @@ Page {
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
                 textFormat: Text.RichText
-                text: "<style>a{color:" + Theme.highlightColor + "}</style>This software was originally used on a Nokia N900 etc..."
+                text: qsTr("<style>a{color:" + Theme.highlightColor + "}</style>This software was originally developed for use on a Nokia N900 and has been ported to Sailfish.")
                 onLinkActivated: {
                     Qt.openUrlExternally(link);
                 }
             }
         }
-
         VerticalScrollDecorator { flickable: contentFlickable }
     }
 }

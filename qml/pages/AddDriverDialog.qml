@@ -21,17 +21,15 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-Dialog {
-    id: addDialog
+import "../extra_imports/CommonUnits.js" as Units
+
+Page {
+    id: addDriverDialog
 
     property bool editMode: false
     property string oldId
     property string oldFullname
     property string oldNickname
-
-    width: parent.width
-
-    title: editMode ? qsTr("Edit driver") : qsTr("Add a new driver")
 
     function addDialogAccepted() {
         if (editMode) {
@@ -41,59 +39,53 @@ Dialog {
         }
     }
 
-    Flickable {
-        id: addDialogData
-        anchors {
-            fill: parent
-            leftMargin: appTheme.paddingLarge
-            rightMargin: appTheme.paddingLarge
-        }
-        contentWidth: addDialogGrid.width
-        contentHeight: addDialogGrid.height
-        Grid {
-            id: addDialogGrid
-            columns: 1
-            spacing: appTheme.paddingMedium
-            Text {
-                text: qsTr("Full name")
-                font.pixelSize: appTheme.fontSizeMedium
-            }
-            FPTextField {
-                id: fullnameField
-                width: addDialog.width-2*appTheme.paddingLarge
-                placeholderText: qsTr("Full name")
-                maximumLength: 40
-                validator: RegExpValidator{}
-                text: editMode ? oldFullname : ""
-            }
-            Text {
-                text: qsTr("Nick name")
-                font.pixelSize: appTheme.fontSizeMedium
-            }
-            FPTextField {
-                id: nicknameField
-                width: addDialog.width-2*appTheme.paddingLarge
-                placeholderText: qsTr("Nick name")
-                maximumLength: 40
-                validator: RegExpValidator{}
-                text: editMode ? oldNickname : ""
-            }
+    SilicaListView {
+        id: adddriverlistview
+        delegate: delegate
+        anchors.fill: parent
+
+        header: PageHeader {
+            title: qsTr("Add a new Driver")
         }
 
+        Component {
+            id: delegate
+            Item {
+                id: delegateRec
+                height: (driverNameText.height * 1.5) + maingrid.height
+                width: parent.width
+                MouseArea {
+                    width: parent.width
+                    height: parent.height
+
+                    Label {
+                        id: driverNameText
+                        text: "What goes here?"
+                        font.bold: true
+                    }
+
+                    Grid {
+                        id: maingrid
+                        anchors {
+                            top: driverNameText.bottom
+                        }
+
+                        columns: 1
+
+                        Row {
+                            Label {
+                                text: qsTr("More stuff here about old name / new name")
+                            }
+                        }
+
+                        Row {
+                            Label {
+                                text: qsTr("Repeat rows ad infinitum")
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
-
-    buttons: FPButtonRow {
-        anchors.horizontalCenter: parent.horizontalCenter
-        FPButton {
-            text: editMode ? qsTr("Apply") : qsTr("Add");
-            onClicked: addDialog.accept()
-        }
-        FPButton {
-            text: qsTr("Cancel");
-            onClicked: addDialog.cancel()
-        }
-      }
-
-    onAccepted: addDialogAccepted()
-
 }

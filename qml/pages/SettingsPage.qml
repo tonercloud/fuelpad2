@@ -21,17 +21,10 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../pages"
-import "../extra_imports"
-import "../extra_imports/CommonFuncs.js" as Funcs
 import "../extra_imports/CommonUnits.js" as Units
-import "../extra_imports/DialogStatus.js" as DialogStatus
 
 Page {
     id: settingsPage
-
-    property variant tools
-
-    tools: commonTools
 
     function setMainUnit(index) {
         var check = applicationData.getIndividualUnit()
@@ -43,10 +36,6 @@ Page {
         applicationData.setMainUnit(mainUnit, checked)
     }
 
-    // FPApplicationTheme {
-        // id: appTheme
-    // }
-
     ListView {
         model: UnitModel {}
         delegate: Text {
@@ -54,75 +43,127 @@ Page {
         }
     }
 
-    PageHeader {
-        id: applicationHeader
-        title: qsTr("Settings")
+    // Text { text: qsTr(name) }
+    ListModel {
+        id: unitModel
+        ListElement { name: QT_TR_NOOP("SI") }
+        ListElement { name: QT_TR_NOOP("US") }
+        ListElement { name: QT_TR_NOOP("Imperial") }
     }
 
-    Column {
-        anchors.top: applicationHeader.bottom
-        anchors.topMargin: appTheme.paddingLarge
-        anchors.horizontalCenter: parent.horizontalCenter
+    // SilicaFlickable {
+    SilicaListView {
+        id: settingsFlickable
+        model: unitModel
+        anchors.fill: parent
+        contentHeight: settingsColumn.height + Theme.paddingLarge
+        flickableDirection: Flickable.VerticalFlick
 
-        spacing: Theme.paddingMedium
+        Column {
+            id: settingsColumn
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.right: parent.right
 
-        FPTouchSelector {
-            id: mainUnitSelector
-            buttonText: qsTr("Unit system")
-            titleText: qsTr("Select unit system")
-            selectedIndex: applicationData.getMainUnit()
-            model: UnitModel {}
-            onSelected: setMainUnit(selectedIndex)
-        }
-
-        Row {
-
-            Label {
-                text: qsTr("Select units individually")
+            PageHeader {
+                title: "Settings"
             }
 
-            Switch {
-                id: individualUnit
-                checked: applicationData.getIndividualUnit()
-                onCheckedChanged: setIndividualUnit(checked)
+            SectionHeader {
+                text: qsTr("Length Unit")
             }
-        }
 
-        FPTouchSelector {
-            id: lengthSelector
-            visible: individualUnit.checked
-            buttonText: qsTr("Unit system for length")
-            titleText: qsTr("Select unit system")
-            selectedIndex: applicationData.getLengthUnit()
-            model: UnitModel {}
-            onSelected: applicationData.setLengthUnit(selectedIndex)
-        }
+            ComboBox {
+                id: unitLengthMethod
+                anchors.left: parent.left
+                anchors.right: parent.right
+                label: qsTr("Select unit system")
+                currentIndex: applicationData.getMainUnit()
 
-        FPTouchSelector {
-            visible: individualUnit.checked
-            buttonText: qsTr("Unit system for volume")
-            titleText: qsTr("Select unit system")
-            selectedIndex: applicationData.getVolumeUnit()
-            model: UnitModel {}
-            onSelected: applicationData.setVolumeUnit(selectedIndex)
-        }
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("SI")
+                    }
+                    MenuItem {
+                        text: qsTr("US")
+                    }
+                    MenuItem {
+                        text: qsTr("Imperial")
+                    }
+                }
+            }
 
-        FPTouchSelector {
-            visible: individualUnit.checked
-            buttonText: qsTr("Unit system for mass")
-            titleText: qsTr("Select unit system")
-            selectedIndex: applicationData.getMassUnit()
-            model: UnitModel {}
-            onSelected: applicationData.setMassUnit(selectedIndex)
-        }
+            SectionHeader {
+                text: qsTr("Volume Unit")
+            }
 
-        FPTouchSelector {
-            visible: individualUnit.checked
-            buttonText: qsTr("Unit system for consumption")
-            titleText: qsTr("Select unit system")
-            selectedIndex: applicationData.getConsumeUnit()
-            model: UnitModel {}
-            onSelected: applicationData.setConsumeUnit(selectedIndex)
+            ComboBox {
+                id: unitVolumeMethod
+                anchors.left: parent.left
+                anchors.right: parent.right
+                label: qsTr("Select unit system")
+                currentIndex: applicationData.getMainUnit()
+
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("SI")
+                    }
+                    MenuItem {
+                        text: qsTr("US")
+                    }
+                    MenuItem {
+                        text: qsTr("Imperial")
+                    }
+                }
+            }
+
+            SectionHeader {
+                text: qsTr("Mass Unit")
+            }
+
+            ComboBox {
+                id: unitMassMethod
+                anchors.left: parent.left
+                anchors.right: parent.right
+                label: qsTr("Select unit system")
+                currentIndex: applicationData.getMainUnit()
+
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("SI")
+                    }
+                    MenuItem {
+                        text: qsTr("US")
+                    }
+                    MenuItem {
+                        text: qsTr("Imperial")
+                    }
+                }
+            }
+
+            SectionHeader {
+                text: qsTr("Consumption Unit")
+            }
+
+            ComboBox {
+                id: unitConsumptionMethod
+                anchors.left: parent.left
+                anchors.right: parent.right
+                label: qsTr("Select unit system")
+                currentIndex: applicationData.getMainUnit()
+
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("SI")
+                    }
+                    MenuItem {
+                        text: qsTr("US")
+                    }
+                    MenuItem {
+                        text: qsTr("Imperial")
+                    }
+                }
+            }
         }
     }
 }

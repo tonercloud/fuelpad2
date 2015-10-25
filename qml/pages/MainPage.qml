@@ -83,8 +83,9 @@ Page {
             id: delegate
             Item {
                 id: delegateRec
+                x: Theme.paddingMedium
                 height: (carNameText.height * 1.5) + maingrid.height
-                width: parent.width
+                width: parent.width - (Theme.paddingMedium * 2)
                 MouseArea {
                     width: parent.width
                     height: parent.height
@@ -152,7 +153,7 @@ Page {
                 Rectangle {
                     id: itemSeperator
                     height: 2
-                    width: carlistview.width
+                    width: carlistview.width - (Theme.paddingMedium * 2)
                     color: "lightgrey"
                     }
                 }

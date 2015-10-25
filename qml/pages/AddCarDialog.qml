@@ -21,131 +21,81 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import "../extra_imports/CommonUnits.js" as Units
+
 Page {
-    SilicaFlickable {
+    id: addcarpage
+
+    SilicaListView {
+        id: addcarlistview
+        model: carModel
+        delegate: delegate
         anchors.fill: parent
-        contentHeight: column.height + Theme.paddingLarge
 
-        VerticalScrollDecorator {}
-
-        Column {
-            id: column
-            anchors { left: parent.left; right: parent.right }
-            spacing: Theme.paddingLarge
-
-            PageHeader { title: "Add a new Car" }
-
-            ListModel {
-                id: fueltypeModel
-                ListElement { name: "Petrol" }
-                ListElement { name: "Diesel" }
-                ListElement { name: "Ethanol" }
-                ListElement { name: "Other" }
-            }
-
-            TextField {
-                id: markfield
-                anchors { left: parent.left; right: parent.right }
-                inputMethodHints: Qt.ImhNoPredictiveText
-                focus: true; label: "Mark"; placeholderText: "Mark / Marque"
-                EnterKey.enabled: text || inputMethodComposing
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: modelfield.focus = true
-            }
-
-            TextField {
-                id: modelfield
-                anchors { left: parent.left; right: parent.right }
-                label: "Model"; placeholderText: "Model of car"
-                EnterKey.enabled: text || inputMethodComposing
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: yearfield.focus = true
-            }
-
-            TextField {
-                id: yearfield
-                anchors { left: parent.left; right: parent.right }
-                validator: RegExpValidator { regExp: /^[0-9]{4,}$/ }
-                inputMethodHints: Qt.ImhFormattedNumbersOnly
-                label: "Model year"; placeholderText: "Registration year of car (4 chars)"
-                EnterKey.enabled: text || inputMethodComposing
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked:  regnumfield.focus = true
-            }
-
-            TextField {
-                id: regnumfield
-                anchors { left: parent.left; right: parent.right }
-                label: "Registration number"; placeholderText: label
-                EnterKey.enabled: text || inputMethodComposing
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: notesfield.focus = true
-            }
-
-            TextField {
-                id: notesfield
-                width: parent.width
-                anchors { left: parent.left; right: parent.right }
-                focus: true; label: "Add Notes"; placeholderText: "Notes"
-                EnterKey.enabled: text || inputMethodComposing
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: fueltypefield.focus = true
-            }
-
-            TextField {
-                id: fueltypefield
-                width: parent.width
-                anchors { left: parent.left; right: parent.right }
-                focus: true; label: "Primary fuel type"; placeholderText: "Select primary fuel type"
-                selectedIndex: 0
-                model: fueltypeModel
-                EnterKey.enabled: text || inputMethodComposing
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: {
-                    if (errorHighlight)
-                        markfield.focus = true
-                    else
-                        addCarToDatabase();
-                    pageStack.clear();
-                        pageStack.push(Qt.resolvedUrl("MainPage.qml"))
-                    }
-                }
-            }
+        header: PageHeader {
+            title: qsTr("Add a new Car")
         }
 
-    Component {
-        id: nextPage
-        Page {
-            backNavigation: true
+        Component {
+            id: delegate
+            Item {
+                id: delegateRec
+                x: Theme.paddingMedium
+                height: (carNameText.height * 1.5) + maingrid.height
+                width: parent.width
+                MouseArea {
+                    width: parent.width
+                    height: parent.height
 
-            Column {
-                anchors { left: parent.left; right: parent.right }
-                spacing: Theme.paddingLarge
+                    Label {
+                        id: carNameText
+                        text: mark + " " + carmodel
+                        font.bold: true
+                    }
 
-                PageHeader { title: "Car Added" }
+                    Grid {
+                        id: maingrid
+                        anchors {
+                            top: carNameText.bottom
+                        }
 
-                Label {
-                    anchors { left: parent.left; right: parent.right }
-                    horizontalAlignment: Text.AlignHCenter
-                    text: "User Information"
-                }
+                        columns: 1
 
-                Label {
-                    anchors { left: parent.left; right: parent.right }
-                    horizontalAlignment: Text.AlignHCenter
-                    text: firstname.text
-                }
+                        Row {
+                            Label {
+                                text: qsTr("Model year : ") + year
+                            }
+                        }
+                        Row {
+                            Label {
+                                text: qsTr("Registration number : ") + regnum
+                            }
+                        }
 
-                Label {
-                    anchors { left: parent.left; right: parent.right }
-                    horizontalAlignment: Text.AlignHCenter
-                    text: lastname.text
-                }
+                        Row {
+                            Label {
+                                text: qsTr("Notes : ") + notes
+                            }
+                        }
 
-                Label {
-                    anchors { left: parent.left; right: parent.right }
-                    horizontalAlignment: Text.AlignHCenter
-                    text: email.text
+                        Row {
+                            Label {
+                                text: qsTr("Overall distance : ") + totalkm.toFixed(0) + " " + Units.getLengthUnit()
+                            }
+                        }
+
+                        Row {
+                            Label {
+                                text: qsTr("Last month : ") + lastmonthkm.toFixed(0) + " " + Units.getLengthUnit()
+                            }
+                        }
+
+                        Row {
+                            Label {
+                                text: qsTr("Last year : ") + lastyearkm.toFixed(0) + " " + Units.getLengthUnit()
+                            }
+                        }
+                    }
                 }
             }
         }

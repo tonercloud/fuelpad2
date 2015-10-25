@@ -11,6 +11,18 @@
         <source>About Fuelpad2</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Fuelpad2 v:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;a href=&quot;https://github.com/tonercloud/harbour-carsails&quot;&gt;Sourcecode on Github&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;Copyright (C) Julius Luukko 2008-2011, 2015&lt;br&gt;&amp; Chris Walker 2015&lt;p&gt;&lt;small&gt;This software is free software distributed under the terms of the GNU General Public License version 3 or later.&lt;/small&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AddAlarmEventDialog</name>
@@ -224,6 +236,34 @@
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Add a new Car</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Model year : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Registration number : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notes : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Overall distance : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last month : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last year : </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AddDriverDialog</name>
@@ -253,6 +293,18 @@
     </message>
     <message>
         <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add a new Driver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>More stuff here about old name / new name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Repeat rows ad infinitum</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -481,10 +533,45 @@
     </message>
 </context>
 <context>
+    <name>Copy_of_SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit system</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select unit system</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select units individually</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit system for length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit system for volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit system for mass</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit system for consumption</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
-        <source>My Cover</source>
-        <translation type="vanished">Mein Cover</translation>
+        <source>Fuelpad2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -549,21 +636,6 @@
     <message>
         <source>Driving log</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FirstPage</name>
-    <message>
-        <source>Show Page 2</source>
-        <translation type="vanished">Zur Seite 2</translation>
-    </message>
-    <message>
-        <source>UI Template</source>
-        <translation type="vanished">UI-Vorlage</translation>
-    </message>
-    <message>
-        <source>Hello Sailors</source>
-        <translation type="vanished">Hallo Matrosen</translation>
     </message>
 </context>
 <context>
@@ -632,32 +704,28 @@
 <context>
     <name>HelpDialog</name>
     <message>
-        <source>Nested Page</source>
-        <translation type="obsolete">Unterseite</translation>
-    </message>
-    <message>
-        <source>Item</source>
-        <translation type="obsolete">Element</translation>
-    </message>
-    <message>
         <source>Help Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fuelpad2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vehicle Records Database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There is no practical limit to the amount of your personal information which is stored, save for the amount of memory in the device.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Acknowledgements</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainPage</name>
-    <message>
-        <source>Show Page 2</source>
-        <translation type="obsolete">Zur Seite 2</translation>
-    </message>
-    <message>
-        <source>UI Template</source>
-        <translation type="obsolete">UI-Vorlage</translation>
-    </message>
-    <message>
-        <source>Hello Sailors</source>
-        <translation type="obsolete">Hallo Matrosen</translation>
-    </message>
     <message>
         <source>Settings</source>
         <translation type="unfinished"></translation>
@@ -852,6 +920,14 @@
         <source>Add a Driver</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Edit Driver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete a Driver</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -1012,6 +1088,22 @@
     </message>
     <message>
         <source>Unit system for consumption</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Length Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Volume Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mass Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Consumption Unit</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

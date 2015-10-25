@@ -37,6 +37,16 @@ Page {
 
         PullDownMenu {
             MenuItem {
+                text: qsTr("Delete a Driver")
+                onClicked: pageStack.push(Qt.resolvedUrl("DeleteDriverDialog.qml", manageDriversPage,
+                                                         {databaseId: databaseid}).open())
+            }
+
+            MenuItem {
+                text: qsTr("Edit Driver")
+                // onClicked: pageStack.push(Qt.resolvedUrl("HelpDialog.qml"))
+            }
+            MenuItem {
                 text: qsTr("Add a Driver")
                 onClicked: pageStack.push(Qt.resolvedUrl("AddDriverDialog.qml"))
             }

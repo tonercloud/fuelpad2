@@ -32,17 +32,34 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
-    CoverPlaceholder {
-        id: covertitle
-        text: "CarSails" + "\n" + "Version : " + APP_VERSION
-        icon.source: "qrc:///assets/icons/harbour-fuelpad2.png"
-    }
+    id: coverpage
+    anchors.centerIn: parent
 
     Image {
-        id: moveon
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: parent.height / 4
-        anchors.horizontalCenter: parent.horizontalCenter
-        source: "qrc:///assets/icons/black-steering-wheel-32.png"
+        id: logo
+        source: "qrc:///assets/icons/harbour-fuelpad2.png"
+        anchors.centerIn: parent
+    }
+
+    Label {
+        id: textlabel
+        anchors.centerIn: coverpage
+        width: coverpage.width - (2 * Theme.paddingLarge)
+        height: (coverpage.height /3) * 2
+        wrapMode: "WordWrap"
+        elide: Text.ElideRight
+        font.pixelSize: Theme.fontSizeMedium
+        style: Text.Raised
+        styleColor: Theme.secondaryColor
+        horizontalAlignment: Text.AlignHCenter
+        text: qsTr("Fuelpad2") + "\n" + "v" + APP_VERSION
+    }
+
+    CoverActionList {
+        id: coverAction
+
+        CoverAction {
+            iconSource: "image://theme/icon-cover-next"
+        }
     }
 }
